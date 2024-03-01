@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://vgvkayxopr0l"]
+[gd_scene load_steps=7 format=3 uid="uid://vgvkayxopr0l"]
 
 [ext_resource type="Texture2D" uid="uid://dcig5mbpw0p75" path="res://sprites/tile_0009.png" id="1_6w2eo"]
 [ext_resource type="Script" path="res://code/player.gd" id="1_sd2qa"]
 [ext_resource type="Texture2D" uid="uid://df5ejb24702hy" path="res://sprites/tile_0010.png" id="2_nbxfr"]
+[ext_resource type="Texture2D" uid="uid://yus3wkeepika" path="res://sprites/fishing rod.png" id="4_lf0cq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fcpqt"]
 animations = [{
@@ -22,13 +23,23 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "rod_wrap")]
 script = ExtResource("1_sd2qa")
 jump_velocity = 300.0
-sprite = NodePath("AnimatedSprite2D")
+sprite = NodePath("Player Sprite")
+rod_wrap = NodePath("RodWrap")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fcpqt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Player Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_t8ud7")
+
+[node name="RodWrap" type="Node2D" parent="."]
+position = Vector2(1, 5)
+
+[node name="Rod Sprite" type="Sprite2D" parent="RodWrap"]
+position = Vector2(4, 2)
+rotation = 0.476475
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("4_lf0cq")
