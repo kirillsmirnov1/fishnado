@@ -23,11 +23,14 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "rod_wrap")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "rod_wrap", "rod_line", "rod_raycast")]
+collision_layer = 2
 script = ExtResource("1_sd2qa")
 jump_velocity = 300.0
 sprite = NodePath("Player Sprite")
 rod_wrap = NodePath("RodWrap")
+rod_line = NodePath("RodLine")
+rod_raycast = NodePath("RodRaycast")
 
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fcpqt")
@@ -35,11 +38,21 @@ sprite_frames = SubResource("SpriteFrames_fcpqt")
 [node name="Player Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_t8ud7")
 
+[node name="RodLine" type="Line2D" parent="."]
+position = Vector2(1, 5)
+points = PackedVector2Array(0, 0, 39.835, -22.59)
+width = 2.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="RodWrap" type="Node2D" parent="."]
 position = Vector2(1, 5)
 
 [node name="Rod Sprite" type="Sprite2D" parent="RodWrap"]
-position = Vector2(4, 2)
+position = Vector2(4, 1)
 rotation = 0.476475
 scale = Vector2(0.285, 0.285)
 texture = ExtResource("4_lf0cq")
+
+[node name="RodRaycast" type="RayCast2D" parent="."]

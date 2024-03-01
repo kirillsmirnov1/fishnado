@@ -5,17 +5,52 @@ class_name Player extends CharacterBody2D
 
 @export var sprite: AnimatedSprite2D
 @export var rod_wrap: Node2D
+@export var rod_line: Line2D
+@export var rod_raycast: RayCast2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var rod_line_connected: bool = false
+var line_collision_point: Vector2
+
+func _ready():
+	rod_line.visible = false 
 
 func _process(delta):
-	base_movement(delta)
+	handle_mouse_input()
+	if rod_line_connected:
+		rod_line_movement(delta)
+	else:
+		base_movement(delta)
+		
 	handle_sprite()
 	rotate_rod()
 	move_and_slide()
 
+func handle_mouse_input():
+	var mouse_pos = get_global_mouse_position()
+	
+	if Input.is_action_just_pressed("action"):
+		rod_raycast.target_position = rod_raycast.to_local(mouse_pos) * 100 # 100 is to shoot further
+		rod_raycast.force_raycast_update()
+		if rod_raycast.is_colliding():
+			rod_line_connected = true
+			line_collision_point = rod_raycast.get_collision_point()
+		
+	elif Input.is_action_just_released("action"):
+		rod_line_connected = false
+	
+	if rod_line_connected:
+		rod_line.visible = true
+		rod_line.points[1] = rod_line.to_local(line_collision_point)
+	else:
+		rod_line.visible = false
+		
+		
 func rotate_rod():
-	rod_wrap.look_at(get_global_mouse_position())
+	if rod_line_connected:
+		rod_wrap.look_at(line_collision_point)
+	else:
+		rod_wrap.look_at(get_global_mouse_position())
 	
 
 func handle_sprite():
@@ -30,6 +65,10 @@ func handle_sprite():
 	elif not should_play and sprite.is_playing():
 		sprite.stop()
 	
+func rod_line_movement(delta):
+	velocity = Vector2.ZERO
+	pass
+
 
 func base_movement(delta):
 	var horizontal_input: float = Input.get_axis("left", "right")
