@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://wtq1rfpibhbq"]
+
+[ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
+[ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_6aeol")
+format = 2
+layer_0/tile_data = PackedInt32Array(7, 65536, 0, 8, 131072, 0, 9, 131072, 0, 10, 131072, 0, 11, 131072, 0, 12, 131072, 0, 13, 131072, 0, 14, 131072, 0, 15, 131072, 0, 16, 196608, 0, 196622, 65536, 0, 196623, 131072, 0, 196624, 131072, 0, 196625, 131072, 0, 196626, 196608, 0, 458752, 65536, 1, 458753, 131072, 1, 458754, 131072, 1, 458755, 131072, 1, 458756, 131072, 1, 458757, 131072, 1, 458758, 131072, 1, 458762, 131072, 1, 458761, 131072, 1, 458760, 131072, 1, 458759, 131072, 1, 458763, 131072, 1, 458764, 131072, 1, 458765, 131072, 1, 458766, 131072, 1, 458767, 131072, 1, 458768, 196608, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2.495, 2.495)
+position_smoothing_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_u73uh")]
+position = Vector2(85, 114)
