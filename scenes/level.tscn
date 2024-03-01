@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=6 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/level_tiles.gd" id="2_8ui0n"]
 [ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
 [ext_resource type="Script" path="res://scenes/camera_control.gd" id="4_hpx1s"]
+[ext_resource type="PackedScene" uid="uid://rpkwdafwypud" path="res://scenes/fish_nado.tscn" id="5_61adx"]
 
 [node name="Level" type="Node2D"]
 
@@ -22,3 +23,6 @@ zoom = Vector2(2.495, 2.495)
 position_smoothing_enabled = true
 script = ExtResource("4_hpx1s")
 target = NodePath("../Player")
+
+[node name="FishNado" parent="." instance=ExtResource("5_61adx")]
+position = Vector2(-11, 125)
