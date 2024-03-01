@@ -3,14 +3,23 @@ class_name Player extends CharacterBody2D
 @export var horizontal_move_speed: float = 100
 @export var jump_velocity: float = 100
 
+@export var angular_acceleration_k: float = 0.05
+@export var angular_speed: float = 0.6
+@export var angular_damping: float = 0.995
+
 @export var sprite: AnimatedSprite2D
 @export var rod_wrap: Node2D
 @export var rod_line: Line2D
 @export var rod_raycast: RayCast2D
+@export var line_length_offset: float = 20
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var rod_line_connected: bool = false
 var line_collision_point: Vector2
+var line_length: float
+var line_angle: float
+var angular_velocity = 0.0
+var angular_acceleration = 0.0
 
 func _ready():
 	rod_line.visible = false 
@@ -33,8 +42,7 @@ func handle_mouse_input():
 		rod_raycast.target_position = rod_raycast.to_local(mouse_pos) * 100 # 100 is to shoot further
 		rod_raycast.force_raycast_update()
 		if rod_raycast.is_colliding():
-			rod_line_connected = true
-			line_collision_point = rod_raycast.get_collision_point()
+			init_rod_line_connection()
 		
 	elif Input.is_action_just_released("action"):
 		rod_line_connected = false
@@ -45,13 +53,21 @@ func handle_mouse_input():
 	else:
 		rod_line.visible = false
 		
-		
+
+func init_rod_line_connection():
+	rod_line_connected = true
+	line_collision_point = rod_raycast.get_collision_point()
+	line_length = (line_collision_point - rod_wrap.global_position).length() - line_length_offset
+	line_angle = Vector2.ZERO.angle_to(rod_wrap.global_position-line_collision_point) #- deg_to_rad(-90)
+	angular_velocity = 0.0
+	angular_acceleration = 0.0
+
+
 func rotate_rod():
 	if rod_line_connected:
 		rod_wrap.look_at(line_collision_point)
 	else:
-		rod_wrap.look_at(get_global_mouse_position())
-	
+		rod_wrap.look_at(get_global_mouse_position())		
 
 func handle_sprite():
 	if velocity.x > 0.0:
@@ -64,9 +80,24 @@ func handle_sprite():
 		sprite.play()
 	elif not should_play and sprite.is_playing():
 		sprite.stop()
+
 	
 func rod_line_movement(delta):
 	velocity = Vector2.ZERO
+	var horizontal_input: float = Input.get_axis("left", "right")
+	angular_velocity += horizontal_input * delta * angular_speed
+	
+	var angular_acceleration = ((-gravity * delta) / line_length) * sin(line_angle)	
+	angular_velocity += angular_acceleration * angular_acceleration_k
+	angular_velocity *= angular_damping
+	line_angle += angular_velocity
+	
+	var target_pos = line_collision_point + \
+			Vector2(line_length*sin(line_angle), line_length*cos(line_angle))
+	
+	velocity = (target_pos - global_position) * 5
+	
+	# global_position = target_pos
 	pass
 
 
