@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=7 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/level_tiles.gd" id="2_8ui0n"]
 [ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
 [ext_resource type="Script" path="res://scenes/camera_control.gd" id="4_hpx1s"]
 [ext_resource type="PackedScene" uid="uid://rpkwdafwypud" path="res://scenes/fish_nado.tscn" id="5_61adx"]
+[ext_resource type="Script" path="res://code/fish_nado.gd" id="6_eqdlr"]
 
 [node name="Level" type="Node2D"]
 
@@ -15,7 +16,7 @@ layer_0/tile_data = PackedInt32Array(7, 65536, 0, 8, 131072, 0, 9, 131072, 0, 10
 script = ExtResource("2_8ui0n")
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
-position = Vector2(85, 114)
+position = Vector2(139, 114)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(130, 73)
@@ -26,3 +27,5 @@ target = NodePath("../Player")
 
 [node name="FishNado" parent="." instance=ExtResource("5_61adx")]
 position = Vector2(-11, 125)
+script = ExtResource("6_eqdlr")
+speed = 75.0

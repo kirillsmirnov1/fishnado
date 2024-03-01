@@ -13,10 +13,15 @@ func _ready():
 			points.append(Vector2i(i, ground_y))
 		
 		x += next_ground_platform_length
-		
-		var next_ground_gap = randi_range(1, 5)
-		x += next_ground_gap
-		
 		set_cells_terrain_connect(0, points, 0, 0)
+		
+		
+		points.clear()
+		var next_ground_gap = randi_range(1, 5)
+		for i in range(x, x + next_ground_gap):
+			points.append(Vector2i(i, 0))
+		
+		x += next_ground_gap
+		set_cells_terrain_connect(0, points, 0, 1)
 		
 	pass
