@@ -27,6 +27,7 @@ height = 22.0
 collision_layer = 2
 script = ExtResource("1_sd2qa")
 jump_velocity = 300.0
+angular_speed = 0.2
 sprite = NodePath("Player Sprite")
 rod_wrap = NodePath("RodWrap")
 rod_line = NodePath("RodLine")

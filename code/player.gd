@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 
 @export var angular_acceleration_k: float = 0.05
 @export var angular_speed: float = 0.6
+@export var line_length_change_speed: float = 100.0
 @export var angular_damping: float = 0.995
 
 @export var sprite: AnimatedSprite2D
@@ -83,8 +84,12 @@ func handle_sprite():
 
 	
 func rod_line_movement(delta):
-	velocity = Vector2.ZERO
 	var horizontal_input: float = Input.get_axis("left", "right")
+	var vertical_input: float = Input.get_axis("up", "down")
+	
+	line_length += vertical_input * line_length_change_speed * delta
+	print(line_length)
+	
 	angular_velocity += horizontal_input * delta * angular_speed
 	
 	var angular_acceleration = ((-gravity * delta) / line_length) * sin(line_angle)	
@@ -96,9 +101,6 @@ func rod_line_movement(delta):
 			Vector2(line_length*sin(line_angle), line_length*cos(line_angle))
 	
 	velocity = (target_pos - global_position) * 5
-	
-	# global_position = target_pos
-	pass
 
 
 func base_movement(delta):
