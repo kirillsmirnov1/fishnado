@@ -47,7 +47,7 @@ cam = NodePath("Camera2D")
 [node name="Level Tiles" type="TileMap" parent="." node_paths=PackedStringArray("cam")]
 tile_set = ExtResource("1_6aeol")
 format = 2
-layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1)
+layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1, 720907, 720896, 6, 655371, 720896, 6, 589835, 720896, 5)
 script = ExtResource("2_8ui0n")
 cam = NodePath("../Camera2D")
 
@@ -82,7 +82,7 @@ script = ExtResource("4_hpx1s")
 target = NodePath("../Player")
 
 [node name="FishNado" parent="." instance=ExtResource("5_61adx")]
-position = Vector2(-167, 173)
+position = Vector2(-843, 173)
 speed = 75.0
 speed_invisible = 200.0
 

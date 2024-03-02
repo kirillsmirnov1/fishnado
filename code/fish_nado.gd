@@ -8,7 +8,7 @@ signal player_entered
 @export var speed_invisible: float = 10
 @export var slowdown_timer: Timer
 
-@onready var current_speed: float = speed
+@onready var current_speed: float = speed_invisible
 
 var speed_mod: float = 1.0
 
