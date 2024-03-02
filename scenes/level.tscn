@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=8 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/game_manager.gd" id="1_xowqr"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
 [ext_resource type="Script" path="res://scenes/camera_control.gd" id="4_hpx1s"]
 [ext_resource type="PackedScene" uid="uid://rpkwdafwypud" path="res://scenes/fish_nado.tscn" id="5_61adx"]
+[ext_resource type="PackedScene" uid="uid://bwl1emcp48pj2" path="res://scenes/UI/game_over_screen.tscn" id="7_ay7ah"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("fishnado")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("fishnado", "game_over_ui", "player")]
 script = ExtResource("1_xowqr")
 fishnado = NodePath("FishNado")
+game_over_ui = NodePath("UI/GameOverScreen")
+player = NodePath("Player")
 
 [node name="Level Tiles" type="TileMap" parent="."]
 tile_set = ExtResource("1_6aeol")
@@ -33,5 +36,11 @@ speed = 75.0
 speed_invisible = 200.0
 speed_change_rate = 70.0
 
+[node name="UI" type="Node2D" parent="."]
+
+[node name="GameOverScreen" parent="UI" instance=ExtResource("7_ay7ah")]
+visible = false
+
 [connection signal="fell_down" from="Player" to="." method="_on_player_fell_down"]
 [connection signal="player_entered" from="FishNado" to="." method="_on_player_entered_fishnado"]
+[connection signal="restart_button_pressed" from="UI/GameOverScreen" to="." method="_on_game_over_screen_restart_button_pressed"]

@@ -16,7 +16,6 @@ signal player_entered
 func _process(delta):
 	current_speed = move_toward(current_speed, target_speed, speed_change_rate * delta)
 	global_position.x += delta * current_speed
-	print("fishnado current speed " + str(current_speed))
 	pass
 
 

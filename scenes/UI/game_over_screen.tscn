@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwl1emcp48pj2"]
+
+[ext_resource type="Script" path="res://code/game_over_screen.gd" id="1_gtvmg"]
+[ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_ot63q"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_gtvmg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" parent="Control" instance=ExtResource("2_ot63q")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.6
+offset_left = 0.0
+offset_top = 31.0
+offset_right = 0.0
+offset_bottom = -1.52588e-05
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Game Over"
+fit_content = false
+scroll_active = false
+
+[node name="RestartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = 22.5
+offset_right = 30.5
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "restart"
+icon_alignment = 1
+
+[connection signal="pressed" from="Control/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="toggled" from="Control/RestartButton" to="." method="_on_restart_button_toggled"]
