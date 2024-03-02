@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=20 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/game_manager.gd" id="1_xowqr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ci0yn6k86nu33" path="res://sprites/powerup_jetpack.png" id="7_krvgu"]
 [ext_resource type="Texture2D" uid="uid://c04mcw4quri22" path="res://sprites/powerup_bubble.png" id="8_jatwf"]
 [ext_resource type="PackedScene" uid="uid://cpvtuje2082p8" path="res://scenes/item.tscn" id="10_fu31b"]
+[ext_resource type="PackedScene" uid="uid://b7hstnny4vt2s" path="res://scenes/UI/text_thingy.tscn" id="10_fuppb"]
 
 [sub_resource type="Resource" id="Resource_3lcyo"]
 script = ExtResource("5_rxkcg")
@@ -33,6 +34,9 @@ sprite = ExtResource("8_jatwf")
 type = 0
 probability = 0.15
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8s3b"]
+size = Vector2(157, 685)
+
 [node name="Level" type="Node2D" node_paths=PackedStringArray("fishnado", "game_over_ui", "player", "cam")]
 script = ExtResource("1_xowqr")
 fishnado = NodePath("FishNado")
@@ -51,6 +55,21 @@ cam = NodePath("../Camera2D")
 script = ExtResource("4_6khhl")
 items = Array[ExtResource("5_rxkcg")]([SubResource("Resource_3lcyo"), SubResource("Resource_k3s4g"), SubResource("Resource_0sy3k")])
 item_scene = ExtResource("10_fu31b")
+
+[node name="TextThingy1" parent="Level Tiles" instance=ExtResource("10_fuppb")]
+offset_left = 10.0
+offset_top = 88.0
+offset_right = 50.0
+offset_bottom = 128.0
+
+[node name="start trigger" type="Area2D" parent="Level Tiles"]
+position = Vector2(247, 118)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Tiles/start trigger"]
+position = Vector2(49.5, -17.5)
+shape = SubResource("RectangleShape2D_j8s3b")
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
 position = Vector2(151, 201)
@@ -76,6 +95,7 @@ visible = false
 
 [connection signal="on_platform_spawn" from="Level Tiles" to="Level Tiles/ItemSpawn" method="_on_platform_spawn"]
 [connection signal="on_item_collected" from="Level Tiles/ItemSpawn" to="." method="_on_item_collected"]
+[connection signal="body_entered" from="Level Tiles/start trigger" to="." method="_on_start_trigger_player_entered"]
 [connection signal="fell_down" from="Player" to="." method="_on_player_fell_down"]
 [connection signal="player_entered" from="FishNado" to="." method="_on_player_entered_fishnado"]
 [connection signal="restart_button_pressed" from="UI/GameOverScreen" to="." method="_on_game_over_screen_restart_button_pressed"]

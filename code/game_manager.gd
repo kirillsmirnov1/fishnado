@@ -22,9 +22,7 @@ var points_total: int = 0
 
 
 func _ready():
-	start_game()
-	# fishnado.set_active(false)
-	pass
+	beginning_of_game()
 
 	
 func _process(delta):
@@ -44,10 +42,22 @@ func _on_player_fell_down():
 		game_over()
 
 
+func _on_start_trigger_player_entered(body):
+	if state == State.Start:
+		start_game()
+
+func beginning_of_game():
+	state = State.Start
+	game_play_ui.visible = false
+	game_over_ui.visible = false
+	fishnado.set_active(false)
+
+
 func start_game():
 	state = State.Game
-	game_over_ui.visible = false
+	game_play_ui.visible = true
 	start_pos = cam.global_position.x
+	fishnado.set_active(true)
 	
 
 func update_points():
@@ -87,3 +97,4 @@ func _on_item_collected(type: ItemType.ItemType, global_position: Vector2):
 			points_collected += 20
 			fishnado.activate_slow_down()
 			pass
+
