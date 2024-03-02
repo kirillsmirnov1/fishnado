@@ -1,19 +1,21 @@
 class_name LevelTiles extends TileMap
 
 @export var ground_start_width: int = 10
+@export var ground_spawn_probability: float = 0.3
 
 @onready var ground_y: int = Globals.lower_y_bound_tiles
 
 func _ready():
 	var x: int = ground_start_width
 	while(x < 300):
-		var next_ground_platform_length = randi_range(3, 10)
-		spawn_platform(0, ground_y, x, x + next_ground_platform_length)
-		x += next_ground_platform_length
+		var spawn_ground: bool = randf() < ground_spawn_probability
+		var y = ground_y if spawn_ground else randi_range(0, ground_y)
+		var x_from = x + randi_range(-2, 2)
+		var x_to = x_from + randi_range(3, 5)
 		
-		var next_ground_gap = randi_range(1, 5)
-		spawn_platform(0, 0, x, x + next_ground_gap)
-		x += next_ground_gap
+		spawn_platform(1, y, x_from, x_to)
+		
+		x = x_to
 		
 	pass
 
