@@ -34,11 +34,9 @@ script = ExtResource("4_hpx1s")
 target = NodePath("../Player")
 
 [node name="FishNado" parent="." instance=ExtResource("5_61adx")]
-position = Vector2(-108, 149)
-scale = Vector2(2.24, 2.24)
+position = Vector2(-167, 173)
 speed = 75.0
 speed_invisible = 200.0
-speed_change_rate = 70.0
 
 [node name="UI" type="Node2D" parent="."]
 

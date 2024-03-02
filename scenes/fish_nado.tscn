@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://rpkwdafwypud"]
 
-[ext_resource type="Texture2D" uid="uid://30w6hbufxrdt" path="res://sprites/fishes/fishTile_078.png" id="1_251jc"]
 [ext_resource type="Script" path="res://code/fish_nado.gd" id="1_ucco1"]
+[ext_resource type="Texture2D" uid="uid://cwgayr5b3hr7p" path="res://sprites/fishes/fishes.png" id="2_bj3le"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ggvd"]
-radius = 61.0082
+radius = 176.003
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rmvyb"]
 particles_animation = true
-particles_anim_h_frames = 1
+particles_anim_h_frames = 10
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
@@ -34,25 +34,28 @@ shape = SubResource("CircleShape2D_6ggvd")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rmvyb")
-amount = 100
+scale = Vector2(2, 2)
+amount = 200
 lifetime = 3.0
-texture = ExtResource("1_251jc")
+texture = ExtResource("2_bj3le")
 emission_shape = 1
-emission_sphere_radius = 71.76
+emission_sphere_radius = 105.2
+spread = 90.0
 gravity = Vector2(0, 0)
 orbit_velocity_min = -0.5
 orbit_velocity_max = -0.1
+angle_min = -45.0
 scale_amount_min = 0.25
 scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_r3a6f")
 color_ramp = SubResource("Gradient_cy0ml")
 color_initial_ramp = SubResource("Gradient_pljgn")
-anim_speed_min = 1.0
-anim_speed_max = 1.0
+anim_offset_max = 1.0
 
 [node name="Screen Visibility" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1.90735e-06, 0.5)
 scale = Vector2(5.7, 5.45)
+rect = Rect2(-10, -22.125, 40.955, 28.17)
 
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
 [connection signal="screen_entered" from="Screen Visibility" to="." method="_on_screen_visibility_screen_entered"]

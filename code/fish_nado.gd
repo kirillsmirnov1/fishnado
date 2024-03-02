@@ -6,15 +6,11 @@ signal player_entered
 
 @export var speed: float = 1
 @export var speed_invisible: float = 10
-@export var speed_change_rate: float = 1
 
-
-@onready var target_speed: float = speed
-@onready var current_speed: float = speed / 3
+@onready var current_speed: float = speed
 
 
 func _process(delta):
-	current_speed = move_toward(current_speed, target_speed, speed_change_rate * delta)
 	global_position.x += delta * current_speed
 	pass
 
@@ -30,11 +26,11 @@ func _on_player_body_entered(body):
 
 func _on_screen_visibility_screen_entered():
 	print("fishnado visible")
-	target_speed = speed
+	current_speed = speed
 	pass # Replace with function body.
 
 
 func _on_screen_visibility_screen_exited():
 	print("fishnado not visible")
-	target_speed = speed_invisible
+	current_speed = speed_invisible
 	pass # Replace with function body.
