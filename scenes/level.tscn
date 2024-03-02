@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=10 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/game_manager.gd" id="1_xowqr"]
 [ext_resource type="Script" path="res://code/level_tiles.gd" id="2_8ui0n"]
 [ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
+[ext_resource type="Script" path="res://code/item_spawn.gd" id="4_6khhl"]
 [ext_resource type="Script" path="res://scenes/camera_control.gd" id="4_hpx1s"]
 [ext_resource type="PackedScene" uid="uid://rpkwdafwypud" path="res://scenes/fish_nado.tscn" id="5_61adx"]
 [ext_resource type="PackedScene" uid="uid://b840bgvrc2gps" path="res://scenes/UI/game_play_ui.tscn" id="7_7rqqr"]
@@ -22,6 +23,9 @@ format = 2
 layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1)
 script = ExtResource("2_8ui0n")
 cam = NodePath("../Camera2D")
+
+[node name="ItemSpawn" type="Node2D" parent="Level Tiles"]
+script = ExtResource("4_6khhl")
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
 position = Vector2(151, 201)
@@ -45,6 +49,7 @@ speed_invisible = 200.0
 [node name="GameOverScreen" parent="UI" instance=ExtResource("7_ay7ah")]
 visible = false
 
+[connection signal="on_platform_spawn" from="Level Tiles" to="Level Tiles/ItemSpawn" method="_on_platform_spawn"]
 [connection signal="fell_down" from="Player" to="." method="_on_player_fell_down"]
 [connection signal="player_entered" from="FishNado" to="." method="_on_player_entered_fishnado"]
 [connection signal="restart_button_pressed" from="UI/GameOverScreen" to="." method="_on_game_over_screen_restart_button_pressed"]

@@ -1,5 +1,7 @@
 class_name LevelTiles extends TileMap
 
+signal on_platform_spawn(data: PlatformSpawnData)
+
 @export var ground_start_width: int = 10
 @export var ground_spawn_probability: float = 0.3
 @export var cam: Camera2D
@@ -35,4 +37,9 @@ func spawn_platform(terrain: int, y: int, x_from: int, x_to: int):
 		points.append(Vector2i(x, y))
 	set_cells_terrain_connect(0, points, 0, terrain)
 	
+	var data = PlatformSpawnData.new()
+	data.x_range = Vector2(x_from, x_to) * Globals.tile_pixel_width
+	data.y = y * Globals.tile_pixel_width
+	
+	on_platform_spawn.emit(data)
 	
