@@ -10,7 +10,7 @@ func _ready():
 	while(x < 300):
 		var spawn_ground: bool = randf() < ground_spawn_probability
 		var y = ground_y if spawn_ground else randi_range(0, ground_y)
-		var x_from = x + randi_range(-2, 2)
+		var x_from = x + randi_range(-1, 1)
 		var x_to = x_from + randi_range(3, 5)
 		
 		spawn_platform(1, y, x_from, x_to)
