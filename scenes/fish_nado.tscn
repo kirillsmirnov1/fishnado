@@ -24,11 +24,12 @@ colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.
 offsets = PackedFloat32Array(0, 0.342711, 0.667519, 1)
 colors = PackedColorArray(0.99, 0.7524, 0.75636, 1, 0.792, 0.8085, 0.99, 1, 0.84744, 0.99, 0.8118, 1, 1, 1, 1, 1)
 
-[node name="FishNado" type="Area2D" node_paths=PackedStringArray("slowdown_timer")]
+[node name="FishNado" type="Area2D" node_paths=PackedStringArray("slowdown_timer", "particles")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ucco1")
 slowdown_timer = NodePath("SlowdownTimer")
+particles = NodePath("CPUParticles2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ggvd")
@@ -36,6 +37,7 @@ shape = SubResource("CircleShape2D_6ggvd")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rmvyb")
 scale = Vector2(2, 2)
+emitting = false
 amount = 200
 lifetime = 3.0
 texture = ExtResource("2_bj3le")

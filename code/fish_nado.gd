@@ -8,6 +8,8 @@ signal player_entered
 @export var speed_invisible: float = 10
 @export var slowdown_timer: Timer
 
+@export var particles: CPUParticles2D
+
 @onready var current_speed: float = speed_invisible
 
 var speed_mod: float = 1.0
@@ -20,6 +22,7 @@ func _process(delta):
 func set_active(active: bool):
 	set_process(active)
 	visible = active
+	particles.emitting = active
 
 
 func _on_player_body_entered(body):

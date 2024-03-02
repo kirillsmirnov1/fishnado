@@ -47,20 +47,15 @@ cam = NodePath("Camera2D")
 [node name="Level Tiles" type="TileMap" parent="." node_paths=PackedStringArray("cam")]
 tile_set = ExtResource("1_6aeol")
 format = 2
-layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1, 720907, 720896, 6, 655371, 720896, 6, 589835, 720896, 5)
+layer_0/tile_data = PackedInt32Array(786432, 131072, 6, 786433, 131072, 6, 786434, 196608, 6, 786442, 131072, 1, 786443, 196608, 1, 786441, 65536, 1, 720907, 720896, 6, 655371, 720896, 6, 589835, 720896, 5, 786431, 65536, 6, 720895, 65536, 1, 655360, 131072, 1, 655362, 196608, 1, 720898, 196608, 6, 655361, 131072, 1, 720896, 131072, 6, 720897, 131072, 6, 851967, 131072, 6, 851966, 131072, 1, 851965, 131072, 1, 851964, 131072, 1, 851963, 131072, 1, 851962, 131072, 6, 786426, 196608, 1, 786425, 131072, 1, 786424, 131072, 1, 851960, 131072, 6, 851959, 131072, 6, 851958, 131072, 6, 851961, 131072, 6, 786422, 131072, 6, 720886, 131072, 6, 655350, 131072, 6, 589814, 196608, 6, 524278, 196608, 6, 458742, 196608, 6, 393206, 196608, 6, 327670, 196608, 6, 262134, 196608, 6, 327669, 65536, 6, 393205, 65536, 6, 458741, 65536, 6, 524277, 65536, 6, 589813, 65536, 6, 655349, 65536, 6, 720885, 65536, 6, 786421, 65536, 6, 851957, 65536, 6, 262133, 65536, 6, 786423, 131072, 6, 917493, 65536, 7, 917494, 131072, 7, 917495, 131072, 7, 917496, 131072, 7, 917497, 131072, 7, 917498, 131072, 7, 917499, 131072, 7, 917500, 131072, 7, 917501, 131072, 7, 917502, 131072, 7, 917503, 131072, 7, 851968, 131072, 7, 851969, 131072, 7, 851970, 196608, 7, 196597, 65536, 6, 131061, 65536, 1, 131062, 196608, 1, 196598, 196608, 6, 655351, 196608, 1, 720887, 196608, 6, 131080, 196608, 0, 131079, 131072, 0, 131078, 131072, 0, 131077, 131072, 0, 131076, 131072, 0, 131075, 65536, 0, 851977, 65536, 7, 851978, 131072, 7, 851979, 196608, 7)
 script = ExtResource("2_8ui0n")
+ground_start_width = 13
 cam = NodePath("../Camera2D")
 
 [node name="ItemSpawn" type="Node2D" parent="Level Tiles"]
 script = ExtResource("4_6khhl")
 items = Array[ExtResource("5_rxkcg")]([SubResource("Resource_3lcyo"), SubResource("Resource_k3s4g"), SubResource("Resource_0sy3k")])
 item_scene = ExtResource("10_fu31b")
-
-[node name="TextThingy1" parent="Level Tiles" instance=ExtResource("10_fuppb")]
-offset_left = 10.0
-offset_top = 88.0
-offset_right = 50.0
-offset_bottom = 128.0
 
 [node name="start trigger" type="Area2D" parent="Level Tiles"]
 position = Vector2(247, 118)
@@ -71,11 +66,69 @@ collision_mask = 2
 position = Vector2(49.5, -17.5)
 shape = SubResource("RectangleShape2D_j8s3b")
 
+[node name="helpful messages" type="Node2D" parent="Level Tiles"]
+
+[node name="TextThingy1" parent="Level Tiles/helpful messages" instance=ExtResource("10_fuppb")]
+offset_left = -183.0
+offset_top = 51.0
+offset_right = -143.0
+offset_bottom = 91.0
+
+[node name="Label" parent="Level Tiles/helpful messages/TextThingy1" index="0"]
+offset_top = 10.0
+offset_right = 94.0
+offset_bottom = 59.0
+text = "use 
+WASD 
+to move"
+
+[node name="TextThingy2" parent="Level Tiles/helpful messages" instance=ExtResource("10_fuppb")]
+offset_left = -84.0
+offset_top = 97.0
+offset_right = -44.0
+offset_bottom = 137.0
+
+[node name="Label" parent="Level Tiles/helpful messages/TextThingy2" index="0"]
+offset_right = 94.16
+offset_bottom = 73.4
+text = "SPACE
+to jump"
+
+[node name="TextThingy3" parent="Level Tiles/helpful messages" instance=ExtResource("10_fuppb")]
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 79.0
+offset_bottom = 64.0
+
+[node name="Label" parent="Level Tiles/helpful messages/TextThingy3" index="0"]
+offset_left = 10.0
+offset_top = 37.0
+offset_right = 128.0
+offset_bottom = 86.0
+text = "CLICK platform 
+& HOLD 
+to swing"
+
+[node name="TextThingy4" parent="Level Tiles/helpful messages" instance=ExtResource("10_fuppb")]
+offset_left = 76.0
+offset_top = 101.0
+offset_right = 116.0
+offset_bottom = 141.0
+
+[node name="Label" parent="Level Tiles/helpful messages/TextThingy4" index="0"]
+offset_left = 27.0
+offset_top = 72.0
+offset_right = 87.0
+offset_bottom = 89.0
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 7
+text = "you can jump while swinging"
+
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
-position = Vector2(151, 201)
+position = Vector2(-122, 181)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(207, 116)
+position = Vector2(7, 116)
 zoom = Vector2(1.545, 1.545)
 position_smoothing_enabled = true
 script = ExtResource("4_hpx1s")
@@ -99,3 +152,8 @@ visible = false
 [connection signal="fell_down" from="Player" to="." method="_on_player_fell_down"]
 [connection signal="player_entered" from="FishNado" to="." method="_on_player_entered_fishnado"]
 [connection signal="restart_button_pressed" from="UI/GameOverScreen" to="." method="_on_game_over_screen_restart_button_pressed"]
+
+[editable path="Level Tiles/helpful messages/TextThingy1"]
+[editable path="Level Tiles/helpful messages/TextThingy2"]
+[editable path="Level Tiles/helpful messages/TextThingy3"]
+[editable path="Level Tiles/helpful messages/TextThingy4"]

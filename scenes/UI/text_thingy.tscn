@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7hstnny4vt2s"]
+[gd_scene load_steps=3 format=3 uid="uid://b7hstnny4vt2s"]
 
 [ext_resource type="Texture2D" uid="uid://bf0ba2m4ervs6" path="res://sprites/panel_beige.png" id="1_5gcrr"]
+[ext_resource type="FontFile" uid="uid://2mvxmru12cjb" path="res://fonts/Rubik-Regular.ttf" id="1_u67k3"]
 
 [node name="TextThingy" type="Control"]
 layout_mode = 3
@@ -13,10 +14,12 @@ layout_mode = 2
 offset_left = 28.0
 offset_top = 36.0
 offset_right = 132.0
-offset_bottom = 97.0
+offset_bottom = 75.465
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.435294, 0.243137, 0.262745, 1)
 theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("1_u67k3")
 text = "use WASD to move"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -28,10 +31,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_5gcrr")
