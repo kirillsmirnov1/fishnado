@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwl1emcp48pj2"]
+[gd_scene load_steps=5 format=3 uid="uid://bwl1emcp48pj2"]
 
 [ext_resource type="Script" path="res://code/game_over_screen.gd" id="1_gtvmg"]
 [ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_ot63q"]
+
+[sub_resource type="Gradient" id="Gradient_s7bbx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nogqb"]
+gradient = SubResource("Gradient_s7bbx")
+height = 24
 
 [node name="GameOverScreen" type="CanvasLayer"]
 layer = 10
@@ -15,6 +22,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.529412)
+
 [node name="GameOverText" parent="Control" instance=ExtResource("2_ot63q")]
 layout_mode = 1
 anchors_preset = -1
@@ -26,6 +42,8 @@ offset_left = 0.0
 offset_top = 31.0
 offset_right = 0.0
 offset_bottom = -1.52588e-05
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Game Over"
@@ -45,7 +63,12 @@ offset_right = 30.5
 offset_bottom = 53.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.219608, 0.219608, 0.219608, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.545098, 0.921569, 0.709804, 1)
 text = "restart"
+icon = SubResource("GradientTexture2D_nogqb")
 icon_alignment = 1
 
 [connection signal="pressed" from="Control/RestartButton" to="." method="_on_restart_button_pressed"]
