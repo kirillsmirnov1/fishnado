@@ -116,7 +116,7 @@ func base_movement(delta):
 		velocity.y += gravity * delta
 
 func handle_jump():
-	if((is_on_floor() or rod_line_connected) and Input.is_action_just_pressed("up")):
+	if((is_on_floor() or rod_line_connected) and Input.is_action_just_pressed("jump")):
 		velocity.y = -jump_velocity
 		rod_line_connected = false
 		

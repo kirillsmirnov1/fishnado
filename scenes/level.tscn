@@ -14,14 +14,15 @@ fishnado = NodePath("FishNado")
 game_over_ui = NodePath("UI/GameOverScreen")
 player = NodePath("Player")
 
-[node name="Level Tiles" type="TileMap" parent="."]
+[node name="Level Tiles" type="TileMap" parent="." node_paths=PackedStringArray("cam")]
 tile_set = ExtResource("1_6aeol")
 format = 2
 layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1)
 script = ExtResource("2_8ui0n")
+cam = NodePath("../Camera2D")
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
-position = Vector2(139, 176)
+position = Vector2(151, 201)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(207, 116)

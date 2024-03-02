@@ -2,12 +2,23 @@ class_name LevelTiles extends TileMap
 
 @export var ground_start_width: int = 10
 @export var ground_spawn_probability: float = 0.3
+@export var cam: Camera2D
 
 @onready var ground_y: int = Globals.lower_y_bound_tiles
 
+var x: int
+
 func _ready():
-	var x: int = ground_start_width
-	while(x < 300):
+	x = ground_start_width
+
+
+func _process(delta):
+	update_level()
+
+
+func update_level():
+	var right_edge = cam.global_position.x + 250
+	while x * Globals.tile_pixel_width < right_edge:
 		var spawn_ground: bool = randf() < ground_spawn_probability
 		var y = ground_y if spawn_ground else randi_range(0, ground_y)
 		var x_from = x + randi_range(-1, 1)
@@ -16,8 +27,7 @@ func _ready():
 		spawn_platform(1, y, x_from, x_to)
 		
 		x = x_to
-		
-	pass
+
 
 func spawn_platform(terrain: int, y: int, x_from: int, x_to: int):
 	var points: Array
