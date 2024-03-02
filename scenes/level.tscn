@@ -48,6 +48,8 @@ cam = NodePath("Camera2D")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
+scroll_base_offset = Vector2(-500, -100)
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-206.135, 0)
