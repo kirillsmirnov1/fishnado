@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rpkwdafwypud"]
+[gd_scene load_steps=5 format=3 uid="uid://rpkwdafwypud"]
 
 [ext_resource type="Texture2D" uid="uid://30w6hbufxrdt" path="res://sprites/fishes/fishTile_078.png" id="1_251jc"]
+[ext_resource type="Script" path="res://code/fish_nado.gd" id="1_ucco1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ggvd"]
 radius = 79.1012
@@ -14,6 +15,7 @@ particles_anim_loop = false
 [node name="FishNado" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_ucco1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ggvd")
@@ -31,3 +33,5 @@ scale_amount_min = 0.25
 scale_amount_max = 0.5
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_player_body_entered"]

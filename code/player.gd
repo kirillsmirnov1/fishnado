@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal fell_down
+
 @export var horizontal_move_speed: float = 100
 @export var jump_velocity: float = 100
 
@@ -35,6 +37,8 @@ func _process(delta):
 	handle_sprite()
 	rotate_rod()
 	move_and_slide()
+	check_fall_death()
+	
 
 func handle_mouse_input():
 	var mouse_pos = get_global_mouse_position()
@@ -112,3 +116,8 @@ func base_movement(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+func check_fall_death():
+	if global_position.y > Globals.lower_y_bound_pixels + 50:
+		fell_down.emit()
+		set_process(false)
