@@ -26,7 +26,7 @@ height = 22.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "rod_wrap", "rod_line", "rod_raycast")]
 collision_layer = 2
 script = ExtResource("1_sd2qa")
-jump_velocity = 300.0
+jump_velocity = 400.0
 angular_speed = 0.2
 sprite = NodePath("Player Sprite")
 rod_wrap = NodePath("RodWrap")

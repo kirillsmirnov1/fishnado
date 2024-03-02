@@ -29,14 +29,16 @@ func _ready():
 
 func _process(delta):
 	handle_mouse_input()
+	
+	handle_jump()
 	if rod_line_connected:
 		rod_line_movement(delta)
 	else:
 		base_movement(delta)
-		
+	move_and_slide()
+	
 	handle_sprite()
 	rotate_rod()
-	move_and_slide()
 	check_fall_death()
 	
 
@@ -92,7 +94,6 @@ func rod_line_movement(delta):
 	var vertical_input: float = Input.get_axis("up", "down")
 	
 	line_length += vertical_input * line_length_change_speed * delta
-	print(line_length)
 	
 	angular_velocity += horizontal_input * delta * angular_speed
 	
@@ -111,12 +112,14 @@ func base_movement(delta):
 	var horizontal_input: float = Input.get_axis("left", "right")
 	velocity.x = horizontal_input * horizontal_move_speed
 	
-	if(is_on_floor() and Input.is_action_just_pressed("up")):
-		velocity.y = -jump_velocity
-	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+func handle_jump():
+	if((is_on_floor() or rod_line_connected) and Input.is_action_just_pressed("up")):
+		velocity.y = -jump_velocity
+		rod_line_connected = false
+		
 func check_fall_death():
 	if global_position.y > Globals.lower_y_bound_pixels + 50:
 		fell_down.emit()
