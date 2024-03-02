@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://code/fish_nado.gd" id="1_ucco1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ggvd"]
-radius = 79.1012
+radius = 61.0082
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rmvyb"]
 particles_animation = true
