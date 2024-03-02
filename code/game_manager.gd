@@ -21,6 +21,7 @@ func _ready():
 	pass
 
 func _process(delta):
+	handle_debug_input()
 	update_points()
 
 
@@ -51,3 +52,7 @@ func game_over():
 func _on_game_over_screen_restart_button_pressed():
 	print("Reloading scene")
 	get_tree().reload_current_scene()
+
+func handle_debug_input():
+	if Input.is_action_just_pressed("1"):
+		player.activate_wings(true)

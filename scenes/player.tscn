@@ -1,9 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://vgvkayxopr0l"]
+[gd_scene load_steps=11 format=3 uid="uid://vgvkayxopr0l"]
 
 [ext_resource type="Texture2D" uid="uid://dcig5mbpw0p75" path="res://sprites/tile_0009.png" id="1_6w2eo"]
 [ext_resource type="Script" path="res://code/player.gd" id="1_sd2qa"]
+[ext_resource type="Texture2D" uid="uid://bfpo4lnqehpwo" path="res://sprites/wing_left.png" id="2_lc27c"]
 [ext_resource type="Texture2D" uid="uid://df5ejb24702hy" path="res://sprites/tile_0010.png" id="2_nbxfr"]
+[ext_resource type="Texture2D" uid="uid://vvv3tn8asrnq" path="res://sprites/wing_right.png" id="3_4a7v2"]
 [ext_resource type="Texture2D" uid="uid://yus3wkeepika" path="res://sprites/fishing rod.png" id="4_lf0cq"]
+
+[sub_resource type="Animation" id="Animation_1e5xw"]
+resource_name = "wing_flap"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings/LeftWingWrap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.785398, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wings/RightWingWrap:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_byicr"]
+_data = {
+"wing_flap": SubResource("Animation_1e5xw")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fcpqt"]
 animations = [{
@@ -33,6 +67,33 @@ rod_wrap = NodePath("RodWrap")
 rod_line = NodePath("RodLine")
 rod_raycast = NodePath("RodRaycast")
 
+[node name="Wings" type="Node2D" parent="."]
+
+[node name="WingsAnim" type="AnimationPlayer" parent="Wings"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_byicr")
+}
+speed_scale = 2.0
+
+[node name="LeftWingWrap" type="Node2D" parent="Wings"]
+
+[node name="WingLeft" type="Sprite2D" parent="Wings/LeftWingWrap"]
+position = Vector2(-11, -5)
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("2_lc27c")
+
+[node name="RightWingWrap" type="Node2D" parent="Wings"]
+
+[node name="WingRight" type="Sprite2D" parent="Wings/RightWingWrap"]
+position = Vector2(11, -5)
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("3_4a7v2")
+
+[node name="WingsTimer" type="Timer" parent="Wings"]
+wait_time = 3.0
+one_shot = true
+
 [node name="Player Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fcpqt")
 
@@ -57,3 +118,5 @@ scale = Vector2(0.285, 0.285)
 texture = ExtResource("4_lf0cq")
 
 [node name="RodRaycast" type="RayCast2D" parent="."]
+
+[connection signal="timeout" from="Wings/WingsTimer" to="." method="_on_wings_timer_timeout"]

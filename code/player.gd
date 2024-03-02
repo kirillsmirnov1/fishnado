@@ -16,16 +16,27 @@ signal fell_down
 @export var rod_raycast: RayCast2D
 @export var line_length_offset: float = 20
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var wing_wrap: Node2D = $Wings
+@onready var wing_anim: AnimationPlayer = $Wings/WingsAnim
+@onready var wing_timer: Timer = $Wings/WingsTimer
+
+
 var rod_line_connected: bool = false
+var wings_active: bool = true
+
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var line_collision_point: Vector2
 var line_length: float
 var line_angle: float
 var angular_velocity = 0.0
 var angular_acceleration = 0.0
 
+
 func _ready():
 	rod_line.visible = false 
+	activate_wings(false)
+
 
 func _process(delta):
 	handle_mouse_input()
@@ -40,6 +51,10 @@ func _process(delta):
 	handle_sprite()
 	rotate_rod()
 	check_fall_death()
+
+
+func _on_wings_timer_timeout():
+	activate_wings(false)
 	
 
 func handle_mouse_input():
@@ -117,12 +132,25 @@ func base_movement(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+
 func handle_jump():
-	if((is_on_floor() or rod_line_connected) and Input.is_action_just_pressed("jump")):
+	if not Input.is_action_just_pressed("jump"):
+		return
+		
+	if is_on_floor() or rod_line_connected or wings_active:
 		velocity.y = -jump_velocity
-		rod_line_connected = false
+		if rod_line_connected: rod_line_connected = false
+		if wings_active: wing_anim.play("wing_flap")
+	
 		
 func check_fall_death():
 	if global_position.y > Globals.lower_y_bound_pixels + 150:
 		fell_down.emit()
 		set_process(false)
+
+
+func activate_wings(activate: bool):
+	if activate:
+		wing_timer.start()
+	wings_active = activate
+	wing_wrap.visible = activate
