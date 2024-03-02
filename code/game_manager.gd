@@ -5,14 +5,23 @@ enum State {Game, GameOver}
 @export var fishnado: FishNado
 @export var game_over_ui: GameOverScreen
 @export var player: Player
+@export var cam: Camera2D
+
+@onready var game_play_ui: GamePlayUI = $UI/GamePlayUI
 
 var state: State
+var start_pos: int
+var points_distance: int = 0 
 
 func _ready():
 	state = State.Game
 	game_over_ui.visible = false
+	start_pos = cam.global_position.x
 	# fishnado.set_active(false)
 	pass
+
+func _process(delta):
+	update_points()
 
 
 func _on_player_entered_fishnado():
@@ -26,7 +35,11 @@ func _on_player_fell_down():
 	if state == State.Game:
 		game_over()
 
-
+func update_points():
+	points_distance = (cam.global_position.x - start_pos) / 40
+	game_play_ui.set_score(points_distance)
+	
+	
 func game_over():
 	state = State.GameOver
 	print("Game Over")

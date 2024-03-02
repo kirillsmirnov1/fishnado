@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bw0mkwaj5s1li"]
+
+[node name="Small Text" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0

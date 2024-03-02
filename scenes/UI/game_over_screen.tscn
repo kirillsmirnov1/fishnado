@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_ot63q"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_gtvmg")
 
 [node name="Control" type="Control" parent="."]

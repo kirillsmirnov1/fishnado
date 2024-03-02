@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b840bgvrc2gps"]
+
+[ext_resource type="Script" path="res://code/game_play_ui.gd" id="1_22mbx"]
+[ext_resource type="PackedScene" uid="uid://bw0mkwaj5s1li" path="res://scenes/UI/small_text.tscn" id="1_kpmv5"]
+
+[node name="GamePlayUI" type="CanvasLayer"]
+script = ExtResource("1_22mbx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreText" parent="Control" instance=ExtResource("1_kpmv5")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_top = 4.0
+offset_right = -9.685
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[right]123"
+fit_content = true

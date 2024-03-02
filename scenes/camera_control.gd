@@ -4,4 +4,5 @@ class_name CameraControl extends Camera2D
 @export var target: Node2D
 
 func _process(delta):
-	global_position.x = target.global_position.x + horizontal_offset
+	var next_pos = target.global_position.x + horizontal_offset
+	global_position.x = max(next_pos, global_position.x)

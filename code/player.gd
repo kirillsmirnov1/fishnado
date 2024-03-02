@@ -62,8 +62,10 @@ func handle_mouse_input():
 		
 
 func init_rod_line_connection():
-	rod_line_connected = true
 	line_collision_point = rod_raycast.get_collision_point()
+	if line_collision_point.y > global_position.y:
+		return
+	rod_line_connected = true
 	line_length = (line_collision_point - rod_wrap.global_position).length() - line_length_offset
 	line_angle = Vector2.ZERO.angle_to(rod_wrap.global_position-line_collision_point) #- deg_to_rad(-90)
 	angular_velocity = 0.0
