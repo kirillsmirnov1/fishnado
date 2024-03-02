@@ -4,3 +4,4 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_3wok0")
+lower_y_bound_tiles = 12

@@ -17,21 +17,22 @@ player = NodePath("Player")
 [node name="Level Tiles" type="TileMap" parent="."]
 tile_set = ExtResource("1_6aeol")
 format = 2
-layer_0/tile_data = PackedInt32Array(7, 65536, 0, 8, 131072, 0, 9, 131072, 0, 10, 131072, 0, 11, 131072, 0, 12, 131072, 0, 13, 131072, 0, 14, 131072, 0, 15, 131072, 0, 16, 196608, 0, 196622, 65536, 0, 196623, 131072, 0, 196624, 131072, 0, 196625, 131072, 0, 196626, 196608, 0, 458752, 65536, 1, 458753, 131072, 1, 458754, 131072, 1, 458755, 131072, 1, 458756, 131072, 1, 458757, 131072, 1, 458758, 131072, 1, 458759, 131072, 1, 458760, 131072, 1, 458761, 196608, 1)
+layer_0/tile_data = PackedInt32Array(786432, 65536, 1, 786433, 131072, 1, 786434, 131072, 1, 786442, 131072, 1, 786443, 196608, 1, 786441, 131072, 1, 786440, 131072, 1, 786439, 131072, 1, 786438, 131072, 1, 786437, 131072, 1, 786436, 131072, 1, 786435, 131072, 1)
 script = ExtResource("2_8ui0n")
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
-position = Vector2(139, 114)
+position = Vector2(139, 176)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(130, 73)
-zoom = Vector2(2.495, 2.495)
+position = Vector2(207, 116)
+zoom = Vector2(1.545, 1.545)
 position_smoothing_enabled = true
 script = ExtResource("4_hpx1s")
 target = NodePath("../Player")
 
 [node name="FishNado" parent="." instance=ExtResource("5_61adx")]
-position = Vector2(-11, 125)
+position = Vector2(-108, 149)
+scale = Vector2(2.24, 2.24)
 speed = 75.0
 speed_invisible = 200.0
 speed_change_rate = 70.0

@@ -1,7 +1,8 @@
 class_name LevelTiles extends TileMap
 
-@export var ground_y: int = 7
 @export var ground_start_width: int = 10
+
+@onready var ground_y: int = Globals.lower_y_bound_tiles
 
 func _ready():
 	var x: int = ground_start_width
