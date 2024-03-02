@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://rpkwdafwypud"]
+[gd_scene load_steps=8 format=3 uid="uid://rpkwdafwypud"]
 
 [ext_resource type="Texture2D" uid="uid://30w6hbufxrdt" path="res://sprites/fishes/fishTile_078.png" id="1_251jc"]
 [ext_resource type="Script" path="res://code/fish_nado.gd" id="1_ucco1"]
@@ -12,6 +12,18 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_r3a6f"]
+_data = [Vector2(0, 0.0158658), 0.0, 0.0, 0, 0, Vector2(0.250597, 1), 0.0, 0.0, 0, 0, Vector2(0.75179, 0.994107), 0.0, 0.0, 0, 0, Vector2(1, 0.00997281), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_cy0ml"]
+offsets = PackedFloat32Array(0, 0.148338, 0.849105, 1)
+colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.509804)
+
+[sub_resource type="Gradient" id="Gradient_pljgn"]
+offsets = PackedFloat32Array(0, 0.342711, 0.667519, 1)
+colors = PackedColorArray(0.99, 0.7524, 0.75636, 1, 0.792, 0.8085, 0.99, 1, 0.84744, 0.99, 0.8118, 1, 1, 1, 1, 1)
+
 [node name="FishNado" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
@@ -22,15 +34,19 @@ shape = SubResource("CircleShape2D_6ggvd")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rmvyb")
-amount = 30
+amount = 100
+lifetime = 3.0
 texture = ExtResource("1_251jc")
 emission_shape = 1
 emission_sphere_radius = 71.76
 gravity = Vector2(0, 0)
-orbit_velocity_min = -1.0
-orbit_velocity_max = -1.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = -0.1
 scale_amount_min = 0.25
 scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_r3a6f")
+color_ramp = SubResource("Gradient_cy0ml")
+color_initial_ramp = SubResource("Gradient_pljgn")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
