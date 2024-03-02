@@ -56,3 +56,17 @@ func _on_game_over_screen_restart_button_pressed():
 func handle_debug_input():
 	if Input.is_action_just_pressed("1"):
 		player.activate_wings(true)
+
+
+func _on_item_collected(type: ItemType.ItemType, global_position: Vector2):
+	match type:
+		ItemType.ItemType.Coin: 
+			#todo
+			pass
+		ItemType.ItemType.Wings:
+			player.activate_wings(true)
+			pass
+		ItemType.ItemType.FishSlowdown:
+			#todo
+			pass
+	pass # Replace with function body.
