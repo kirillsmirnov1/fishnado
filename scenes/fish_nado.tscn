@@ -34,4 +34,10 @@ scale_amount_max = 0.5
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[node name="Screen Visibility" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, 0.5)
+scale = Vector2(5.7, 5.45)
+
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
+[connection signal="screen_entered" from="Screen Visibility" to="." method="_on_screen_visibility_screen_entered"]
+[connection signal="screen_exited" from="Screen Visibility" to="." method="_on_screen_visibility_screen_exited"]
