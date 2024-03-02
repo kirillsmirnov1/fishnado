@@ -29,7 +29,7 @@ target = NodePath("../Player")
 
 [node name="FishNado" parent="." instance=ExtResource("5_61adx")]
 position = Vector2(-11, 125)
-speed = 50.0
+speed = 75.0
 speed_invisible = 200.0
 speed_change_rate = 70.0
 
