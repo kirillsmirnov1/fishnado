@@ -10,7 +10,6 @@ signal on_item_collected(type: ItemType.ItemType, global_position: Vector2)
 
 func _on_platform_spawn(data: PlatformSpawnData):
 	var roll = randf()
-	print("roll " + str(roll))
 	var probability_accumulated: float = 0.0
 	
 	for item: ItemData in items:

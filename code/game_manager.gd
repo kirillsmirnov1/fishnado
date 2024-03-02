@@ -1,6 +1,11 @@
 class_name GameManager extends Node2D
 
-enum State {Game, GameOver}
+enum State 
+{
+	Start,
+	Game, 
+	GameOver
+}
 
 @export var fishnado: FishNado
 @export var game_over_ui: GameOverScreen
@@ -17,12 +22,11 @@ var points_total: int = 0
 
 
 func _ready():
-	state = State.Game
-	game_over_ui.visible = false
-	start_pos = cam.global_position.x
+	start_game()
 	# fishnado.set_active(false)
 	pass
 
+	
 func _process(delta):
 	handle_debug_input()
 	update_points()
@@ -36,8 +40,15 @@ func _on_player_entered_fishnado():
 
 func _on_player_fell_down():
 	print("player fell down")
-	if state == State.Game:
+	if state != State.GameOver:
 		game_over()
+
+
+func start_game():
+	state = State.Game
+	game_over_ui.visible = false
+	start_pos = cam.global_position.x
+	
 
 func update_points():
 	points_distance = (cam.global_position.x - start_pos) / 40
