@@ -123,6 +123,6 @@ func handle_jump():
 		rod_line_connected = false
 		
 func check_fall_death():
-	if global_position.y > Globals.lower_y_bound_pixels + 50:
+	if global_position.y > Globals.lower_y_bound_pixels + 150:
 		fell_down.emit()
 		set_process(false)
