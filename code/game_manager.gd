@@ -12,6 +12,9 @@ enum State {Game, GameOver}
 var state: State
 var start_pos: int
 var points_distance: int = 0 
+var points_collected: int = 0
+var points_total: int = 0
+
 
 func _ready():
 	state = State.Game
@@ -38,7 +41,9 @@ func _on_player_fell_down():
 
 func update_points():
 	points_distance = (cam.global_position.x - start_pos) / 40
-	game_play_ui.set_score(points_distance)
+	points_total = points_distance + points_collected
+	
+	game_play_ui.set_score(points_total)
 	
 	
 func game_over():
@@ -61,12 +66,13 @@ func handle_debug_input():
 func _on_item_collected(type: ItemType.ItemType, global_position: Vector2):
 	match type:
 		ItemType.ItemType.Coin: 
-			#todo
+			points_collected += 10
 			pass
 		ItemType.ItemType.Wings:
+			points_collected += 30
 			player.activate_wings(true)
 			pass
 		ItemType.ItemType.FishSlowdown:
-			#todo
+			points_collected += 20
+			fishnado.activate_slow_down()
 			pass
-	pass # Replace with function body.

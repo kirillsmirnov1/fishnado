@@ -24,10 +24,11 @@ colors = PackedColorArray(1, 1, 1, 0.360784, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.
 offsets = PackedFloat32Array(0, 0.342711, 0.667519, 1)
 colors = PackedColorArray(0.99, 0.7524, 0.75636, 1, 0.792, 0.8085, 0.99, 1, 0.84744, 0.99, 0.8118, 1, 1, 1, 1, 1)
 
-[node name="FishNado" type="Area2D"]
+[node name="FishNado" type="Area2D" node_paths=PackedStringArray("slowdown_timer")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ucco1")
+slowdown_timer = NodePath("SlowdownTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6ggvd")
@@ -57,6 +58,11 @@ position = Vector2(1.90735e-06, 0.5)
 scale = Vector2(5.7, 5.45)
 rect = Rect2(-10, -22.125, 40.955, 28.17)
 
+[node name="SlowdownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_player_body_entered"]
 [connection signal="screen_entered" from="Screen Visibility" to="." method="_on_screen_visibility_screen_entered"]
 [connection signal="screen_exited" from="Screen Visibility" to="." method="_on_screen_visibility_screen_exited"]
+[connection signal="timeout" from="SlowdownTimer" to="." method="_on_slowdown_timer_timeout"]
