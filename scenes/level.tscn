@@ -48,12 +48,14 @@ cam = NodePath("Camera2D")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
+scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(1242, 0)
+motion_mirroring = Vector2(1242.16, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(1, 0.729412, 0.72549, 1)
 texture_repeat = 2
 scale = Vector2(3.245, 3.245)
 texture = ExtResource("2_t1nfv")
@@ -63,9 +65,10 @@ region_rect = Rect2(0, 0.354, 382.792, 71.646)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(1242, 0)
+motion_mirroring = Vector2(1246.08, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color(0.843137, 0.658824, 0.964706, 1)
 texture_repeat = 2
 scale = Vector2(3.245, 3.245)
 texture = ExtResource("3_c0lu4")
