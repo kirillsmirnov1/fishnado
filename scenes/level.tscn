@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://wtq1rfpibhbq"]
+[gd_scene load_steps=23 format=3 uid="uid://wtq1rfpibhbq"]
 
 [ext_resource type="TileSet" uid="uid://exgthm2iaypp" path="res://sprites/level_tiles.tres" id="1_6aeol"]
 [ext_resource type="Script" path="res://code/game_manager.gd" id="1_xowqr"]
 [ext_resource type="Script" path="res://code/level_tiles.gd" id="2_8ui0n"]
 [ext_resource type="Texture2D" uid="uid://dly88yarnpv8u" path="res://sprites/background/back_1.png" id="2_t1nfv"]
 [ext_resource type="PackedScene" uid="uid://vgvkayxopr0l" path="res://scenes/player.tscn" id="2_u73uh"]
+[ext_resource type="Script" path="res://addons/nklbdev.previewing_parallax_background/PreviewingParallaxBackground.gd" id="2_yljy8"]
 [ext_resource type="Texture2D" uid="uid://b264iqcrlkafj" path="res://sprites/background/back_0.png" id="3_c0lu4"]
 [ext_resource type="Script" path="res://code/item_spawn.gd" id="4_6khhl"]
 [ext_resource type="Script" path="res://scenes/camera_control.gd" id="4_hpx1s"]
@@ -46,38 +47,36 @@ game_over_ui = NodePath("UI/GameOverScreen")
 player = NodePath("Player")
 cam = NodePath("Camera2D")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
-scroll_base_offset = Vector2(-500, -100)
-scroll_ignore_camera_zoom = true
+[node name="PreviewingParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_yljy8")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-206.135, 0)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="PreviewingParallaxBackground"]
+position = Vector2(-233.977, -81.9768)
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(26880, 0)
+motion_mirroring = Vector2(633.6, 237.6)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="PreviewingParallaxBackground/ParallaxLayer"]
 modulate = Color(1, 0.729412, 0.72549, 1)
 texture_repeat = 2
 scale = Vector2(3.3, 3.3)
 texture = ExtResource("2_t1nfv")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 7680, 72)
+region_rect = Rect2(0, 0, 192, 72)
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-206.135, 0)
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="PreviewingParallaxBackground"]
+position = Vector2(-204.73, -71.7297)
 motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(26880, 0)
+motion_mirroring = Vector2(633.6, 237.6)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="PreviewingParallaxBackground/ParallaxLayer2"]
 modulate = Color(0.843137, 0.658824, 0.964706, 1)
 texture_repeat = 2
 scale = Vector2(3.3, 3.3)
 texture = ExtResource("3_c0lu4")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 7680, 72)
+region_rect = Rect2(0, 0, 192, 72)
 
 [node name="Level Tiles" type="TileMap" parent="." node_paths=PackedStringArray("cam")]
 tile_set = ExtResource("1_6aeol")
