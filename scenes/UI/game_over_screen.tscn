@@ -8,11 +8,13 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nogqb"]
 gradient = SubResource("Gradient_s7bbx")
-height = 24
+width = 124
+height = 44
 
-[node name="GameOverScreen" type="CanvasLayer"]
+[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("score_label")]
 layer = 10
 script = ExtResource("1_gtvmg")
+score_label = NodePath("Control/score text")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -39,9 +41,9 @@ anchor_top = 0.25
 anchor_right = 0.75
 anchor_bottom = 0.6
 offset_left = 0.0
-offset_top = 31.0
+offset_top = -9.0
 offset_right = 0.0
-offset_bottom = -1.52588e-05
+offset_bottom = -40.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 50
@@ -50,6 +52,27 @@ text = "[center]Game Over"
 fit_content = false
 scroll_active = false
 
+[node name="score text" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.675
+offset_top = -38.215
+offset_right = 215.675
+offset_bottom = 55.785
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 21
+text = "score: 23
+best: 35"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RestartButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -57,16 +80,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = 22.5
-offset_right = 30.5
-offset_bottom = 53.5
+offset_left = -66.0
+offset_top = 55.185
+offset_right = 66.0
+offset_bottom = 107.185
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.219608, 0.219608, 0.219608, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(0.545098, 0.921569, 0.709804, 1)
+theme_override_font_sizes/font_size = 31
 text = "restart"
 icon = SubResource("GradientTexture2D_nogqb")
 icon_alignment = 1

@@ -66,8 +66,15 @@ func start_game():
 func game_over():
 	state = State.GameOver
 	print("Game Over")
+	
+	var game_over_data = GameOverData.new()
+	game_over_data.new_best_score = points_total > Globals.best_score
 	Globals.best_score = points_total
-	game_over_ui.visible = true
+	game_over_data.score = points_total
+	game_over_data.best_score = Globals.best_score
+	
+	game_over_ui.display(game_over_data)
+	
 	game_play_ui.visible = false
 	player.set_process(false)
 	player.visible = false
@@ -76,6 +83,8 @@ func game_over():
 
 
 func update_points():
+	if state != State.Game: return 
+	
 	points_distance = (cam.global_position.x - start_pos) / 40
 	points_total = points_distance + points_collected
 	
