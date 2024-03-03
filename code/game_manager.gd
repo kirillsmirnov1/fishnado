@@ -64,6 +64,7 @@ func start_game():
 	
 	
 func game_over():
+	player.disable_reel()
 	state = State.GameOver
 	print("Game Over")
 	

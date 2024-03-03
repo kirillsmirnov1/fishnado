@@ -156,6 +156,7 @@ func handle_jump():
 		
 func check_fall_death():
 	if global_position.y > Globals.lower_y_bound_pixels + 150:
+		disable_reel()
 		fell_down.emit()
 		set_process(false)
 
