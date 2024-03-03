@@ -94,7 +94,7 @@ func update_points():
 
 func _on_game_over_screen_restart_button_pressed():
 	print("Reloading scene")
-	get_tree().reload_current_scene()
+	TransitionScreen.reload_scene()
 	AudioManager.play_restart_sound()
 
 

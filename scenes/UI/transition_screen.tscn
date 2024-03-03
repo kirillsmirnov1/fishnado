@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkcn5oksrvym2"]
+
+[ext_resource type="Script" path="res://code/transition_screen.gd" id="1_k476h"]
+[ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_22cqi"]
+
+[node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("bg", "timer_0_5")]
+layer = 100
+script = ExtResource("1_k476h")
+bg = NodePath("ColorRect")
+timer_0_5 = NodePath("0_5 timer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BigText" parent="ColorRect" instance=ExtResource("2_22cqi")]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = -38.0
+offset_right = 0.0
+offset_bottom = 38.0
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "[center]FISHNADO"
+
+[node name="0_5 timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
