@@ -161,16 +161,17 @@ text = "you can jump while swinging"
 position = Vector2(-122, 181)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(7, 116)
+position = Vector2(0, 116)
 zoom = Vector2(1.545, 1.545)
 position_smoothing_enabled = true
 script = ExtResource("4_hpx1s")
 target = NodePath("../Player")
 
-[node name="FishNado" parent="." instance=ExtResource("5_61adx")]
-position = Vector2(-385.35, 173)
+[node name="FishNado" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("5_61adx")]
+position = Vector2(-385, 173)
 speed = 75.0
 speed_invisible = 500.0
+cam = NodePath("../Camera2D")
 
 [node name="UI" type="Node2D" parent="."]
 

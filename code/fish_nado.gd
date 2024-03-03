@@ -8,13 +8,17 @@ signal player_entered
 @export var speed_invisible: float = 10
 
 @export var particles: CPUParticles2D
+@export var cam: Camera2D
 
 @onready var current_speed: float = speed_invisible
 
+var cam_delta = 385
 var speed_mod: float = 1.0
 
 func _process(delta):
 	global_position.x += delta * current_speed * speed_mod
+	if cam.global_position.x - global_position.x > cam_delta:
+		global_position.x = cam.global_position.x - cam_delta
 	pass
 
 
