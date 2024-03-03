@@ -52,7 +52,8 @@ func play_jump_sound():
 func play_wing_sound():
 	$wing_flap.play()
 	
-	
+func play_restart_sound():
+	$restart.play()
 	
 	
 	
