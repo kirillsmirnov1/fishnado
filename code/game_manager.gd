@@ -26,7 +26,8 @@ func _ready():
 
 	
 func _process(delta):
-	handle_debug_input()
+	if Globals.debug: 
+		handle_debug_input()
 	update_points()
 
 

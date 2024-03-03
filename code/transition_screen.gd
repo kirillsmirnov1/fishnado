@@ -15,6 +15,10 @@ func _ready():
 	for line: Label in lines:
 		line.modulate = Color.TRANSPARENT
 	
+	if Globals.debug:
+		visible = false
+		return
+	
 	var t = create_tween()
 	
 	# Showing lines one by one

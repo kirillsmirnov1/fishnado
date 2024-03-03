@@ -8,6 +8,9 @@ extends Node
 @onready var lower_y_bound_pixels: int = lower_y_bound_tiles * tile_pixel_width
 
 
+var debug: bool = false
+
+
 var best_score: int = 0:
 	set(val):
 		if val > best_score:
