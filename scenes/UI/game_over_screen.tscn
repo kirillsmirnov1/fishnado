@@ -11,9 +11,10 @@ gradient = SubResource("Gradient_s7bbx")
 width = 124
 height = 44
 
-[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("score_label")]
+[node name="GameOverScreen" type="CanvasLayer" node_paths=PackedStringArray("root", "score_label")]
 layer = 10
 script = ExtResource("1_gtvmg")
+root = NodePath("Control")
 score_label = NodePath("Control/score text")
 
 [node name="Control" type="Control" parent="."]
