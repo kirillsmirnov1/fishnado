@@ -67,9 +67,11 @@ func game_over():
 	state = State.GameOver
 	print("Game Over")
 	game_over_ui.visible = true
+	game_play_ui.visible = false
 	player.set_process(false)
 	player.visible = false
 	AudioManager.start_idle_music()
+	AudioManager.play_game_over_sound()
 
 
 func update_points():
@@ -93,13 +95,16 @@ func _on_item_collected(type: ItemType.ItemType, global_position: Vector2):
 	match type:
 		ItemType.ItemType.Coin: 
 			points_collected += 10
+			AudioManager.play_coin_sound()
 			pass
 		ItemType.ItemType.Wings:
 			points_collected += 30
 			player.activate_wings(true)
+			AudioManager.play_powerup_sound()
 			pass
 		ItemType.ItemType.FishSlowdown:
 			points_collected += 20
 			fishnado.activate_slow_down()
+			AudioManager.play_powerup_sound()
 			pass
 

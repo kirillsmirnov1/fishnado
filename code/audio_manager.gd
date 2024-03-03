@@ -35,4 +35,26 @@ func start_idle_music():
 	var tween = create_tween()
 	tween.tween_property(action_music, "volume_db", -80, music_tween_duration)
 	tween.parallel().tween_property(idle_music, "volume_db", 0, music_tween_duration)
-	pass
+
+
+func play_game_over_sound():
+	$game_over_sound.play()
+	
+func play_coin_sound():
+	$coin_sound.play()
+	
+func play_powerup_sound():
+	$power_up_sound.play()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://clcdrtmlk8c8i"]
+[gd_scene load_steps=7 format=3 uid="uid://clcdrtmlk8c8i"]
 
 [ext_resource type="Script" path="res://code/audio_manager.gd" id="1_o4j77"]
 [ext_resource type="AudioStream" uid="uid://bar34jo8w617h" path="res://audio/retro-game-music-loop__715708__prodbyrey.mp3" id="2_xlmjn"]
 [ext_resource type="AudioStream" uid="uid://b8n11rhvan8pp" path="res://audio/shanty-town__257997__foolboymedia.mp3" id="3_rbtop"]
+[ext_resource type="AudioStream" uid="uid://c2uk5y4rgynfo" path="res://audio/game-over-arcade__382310__myfox14.wav" id="4_kub7g"]
+[ext_resource type="AudioStream" uid="uid://b4hdyw8ugly3r" path="res://audio/coins-1__341695__projectsu012.wav" id="5_jeqp8"]
+[ext_resource type="AudioStream" uid="uid://dscx2yr1debfb" path="res://audio/level-up-01__337049__shinephoenixstormcrow__320655__rhodesmas.mp3" id="6_486iy"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("action_music", "idle_music")]
 script = ExtResource("1_o4j77")
@@ -15,3 +18,12 @@ volume_db = -15.0
 
 [node name="idle_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_rbtop")
+
+[node name="game_over_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kub7g")
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jeqp8")
+
+[node name="power_up_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_486iy")
