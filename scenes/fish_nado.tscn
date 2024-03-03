@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://code/fish_nado.gd" id="1_ucco1"]
 [ext_resource type="Texture2D" uid="uid://cwgayr5b3hr7p" path="res://sprites/fishes/fishes.png" id="2_bj3le"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ggvd"]
-radius = 176.003
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jq2wa"]
+radius = 99.95
+height = 1732.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rmvyb"]
 particles_animation = true
@@ -32,7 +33,7 @@ slowdown_timer = NodePath("SlowdownTimer")
 particles = NodePath("CPUParticles2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6ggvd")
+shape = SubResource("CapsuleShape2D_jq2wa")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rmvyb")
