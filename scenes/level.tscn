@@ -179,12 +179,19 @@ speed_invisible = 500.0
 [node name="GameOverScreen" parent="UI" instance=ExtResource("7_ay7ah")]
 visible = false
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpeedupTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="on_platform_spawn" from="Level Tiles" to="Level Tiles/ItemSpawn" method="_on_platform_spawn"]
 [connection signal="on_item_collected" from="Level Tiles/ItemSpawn" to="." method="_on_item_collected"]
 [connection signal="body_entered" from="Level Tiles/start trigger" to="." method="_on_start_trigger_player_entered"]
 [connection signal="fell_down" from="Player" to="." method="_on_player_fell_down"]
 [connection signal="player_entered" from="FishNado" to="." method="_on_player_entered_fishnado"]
 [connection signal="restart_button_pressed" from="UI/GameOverScreen" to="." method="_on_game_over_screen_restart_button_pressed"]
+[connection signal="timeout" from="Timers/SpeedupTimer" to="." method="_on_speedup_timer_timeout"]
 
 [editable path="Level Tiles/helpful messages/TextThingy1"]
 [editable path="Level Tiles/helpful messages/TextThingy2"]

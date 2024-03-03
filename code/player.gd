@@ -32,6 +32,7 @@ var line_length: float
 var line_angle: float
 var angular_velocity = 0.0
 var angular_acceleration = 0.0
+var speed_mod: float = 1.0
 
 
 func _ready():
@@ -131,7 +132,7 @@ func rod_line_movement(delta):
 
 func base_movement(delta):
 	var horizontal_input: float = Input.get_axis("left", "right")
-	velocity.x = horizontal_input * horizontal_move_speed
+	velocity.x = horizontal_input * horizontal_move_speed * speed_mod
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta

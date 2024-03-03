@@ -76,7 +76,7 @@ texture_repeat = 2
 rotation = -0.785398
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_xgf8w")
-offset = Vector2(117.37, 0)
+offset = Vector2(75.5382, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 3200, 3200)
 

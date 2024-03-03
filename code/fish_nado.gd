@@ -6,7 +6,6 @@ signal player_entered
 
 @export var speed: float = 1
 @export var speed_invisible: float = 10
-@export var slowdown_timer: Timer
 
 @export var particles: CPUParticles2D
 
@@ -43,7 +42,6 @@ func _on_screen_visibility_screen_exited():
 
 func activate_slow_down():
 	speed_mod = 0.25
-	slowdown_timer.start()
 
-func _on_slowdown_timer_timeout():
+func disable_slowdown():
 	speed_mod = 1
