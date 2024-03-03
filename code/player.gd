@@ -23,6 +23,7 @@ signal fell_down
 
 var rod_line_connected: bool = false
 var wings_active: bool = true
+var was_on_ground: bool = true
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -51,6 +52,7 @@ func _process(delta):
 	handle_sprite()
 	rotate_rod()
 	check_fall_death()
+	check_ground()
 
 
 func _on_wings_timer_timeout():
@@ -68,6 +70,7 @@ func handle_mouse_input():
 		
 	elif Input.is_action_just_released("action"):
 		rod_line_connected = false
+		disable_reel()
 	
 	if rod_line_connected:
 		rod_line.visible = true
@@ -81,6 +84,7 @@ func init_rod_line_connection():
 	if line_collision_point.y > global_position.y:
 		return
 	rod_line_connected = true
+	AudioManager.play_reel_sound(true)
 	line_length = (line_collision_point - rod_wrap.global_position).length() - line_length_offset
 	line_angle = Vector2.ZERO.angle_to(rod_wrap.global_position-line_collision_point) #- deg_to_rad(-90)
 	angular_velocity = 0.0
@@ -141,7 +145,7 @@ func handle_jump():
 		velocity.y = -jump_velocity
 		
 		if rod_line_connected: 
-			rod_line_connected = false
+			disable_reel()
 		
 		if wings_active: 
 			wing_anim.play("wing_flap")
@@ -161,3 +165,16 @@ func activate_wings(activate: bool):
 		wing_timer.start()
 	wings_active = activate
 	wing_wrap.visible = activate
+
+func disable_reel():
+	rod_line_connected = false
+	AudioManager.play_reel_sound(false)
+
+func check_ground():
+	if is_on_floor() == was_on_ground: 
+		return
+	
+	if not was_on_ground:
+		AudioManager.play_thump_sound()
+		
+	was_on_ground = is_on_floor()

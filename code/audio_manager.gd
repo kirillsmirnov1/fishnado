@@ -55,7 +55,11 @@ func play_wing_sound():
 func play_restart_sound():
 	$restart.play()
 	
-	
+func play_reel_sound(playing: bool):
+	$reel.playing = playing
+
+func play_thump_sound():
+	$thump.play()
 	
 	
 	

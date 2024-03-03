@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clcdrtmlk8c8i"]
+[gd_scene load_steps=12 format=3 uid="uid://clcdrtmlk8c8i"]
 
 [ext_resource type="Script" path="res://code/audio_manager.gd" id="1_o4j77"]
 [ext_resource type="AudioStream" uid="uid://bar34jo8w617h" path="res://audio/retro-game-music-loop__715708__prodbyrey.mp3" id="2_xlmjn"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b7hn027husunh" path="res://audio/jumping__146726__leszek_szary.wav" id="7_6s8h7"]
 [ext_resource type="AudioStream" uid="uid://coeovdr6ba53f" path="res://audio/birdflap1__246225__agentdd.wav" id="8_l5iul"]
 [ext_resource type="AudioStream" uid="uid://fqsaey308ly3" path="res://audio/restart__243020__plasterbrain.ogg" id="9_20orb"]
+[ext_resource type="AudioStream" uid="uid://bv6tq2vvaslpc" path="res://audio/fly-fishing-reeling-reel__641696__theflyfishingfilmmaker.mp3" id="10_rxe81"]
+[ext_resource type="AudioStream" uid="uid://dtm8cygfdn3nd" path="res://audio/book-impact-02__240990__adrian_gomar.mp3" id="11_2rcwj"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("action_music", "idle_music")]
 script = ExtResource("1_o4j77")
@@ -43,3 +45,11 @@ volume_db = 10.0
 
 [node name="restart" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_20orb")
+
+[node name="reel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rxe81")
+volume_db = -15.0
+
+[node name="thump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_2rcwj")
+volume_db = -20.0
