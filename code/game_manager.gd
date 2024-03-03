@@ -66,6 +66,7 @@ func start_game():
 func game_over():
 	state = State.GameOver
 	print("Game Over")
+	Globals.best_score = points_total
 	game_over_ui.visible = true
 	game_play_ui.visible = false
 	player.set_process(false)
