@@ -119,7 +119,7 @@ func _on_item_collected(type: ItemType.ItemType, global_position: Vector2):
 		ItemType.ItemType.FishSlowdown:
 			points_collected += 20
 			fishnado.activate_slow_down()
-			player.speed_mod = 2
+			player.speed_mod = 1.5
 			$Timers/SpeedupTimer.start()
 			AudioManager.play_powerup_sound()
 			pass
