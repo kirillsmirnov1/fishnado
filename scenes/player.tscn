@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://vgvkayxopr0l"]
+[gd_scene load_steps=14 format=3 uid="uid://vgvkayxopr0l"]
 
 [ext_resource type="Texture2D" uid="uid://dcig5mbpw0p75" path="res://sprites/tile_0009.png" id="1_6w2eo"]
 [ext_resource type="Script" path="res://code/player.gd" id="1_sd2qa"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://df5ejb24702hy" path="res://sprites/tile_0010.png" id="2_nbxfr"]
 [ext_resource type="Texture2D" uid="uid://vvv3tn8asrnq" path="res://sprites/wing_right.png" id="3_4a7v2"]
 [ext_resource type="Texture2D" uid="uid://yus3wkeepika" path="res://sprites/fishing rod.png" id="4_lf0cq"]
+[ext_resource type="Script" path="res://code/trail.gd" id="7_igahc"]
+
+[sub_resource type="Curve" id="Curve_juvt0"]
+_data = [Vector2(0, 0.990226), 0.0, -0.216359, 0, 0, Vector2(1, 0.384211), -1.40092, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0u2yh"]
+offsets = PackedFloat32Array(0.00429185, 1)
+colors = PackedColorArray(1, 1, 1, 0.619608, 1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_1e5xw"]
 resource_name = "wing_flap"
@@ -66,6 +75,12 @@ sprite = NodePath("Player Sprite")
 rod_wrap = NodePath("RodWrap")
 rod_line = NodePath("RodLine")
 rod_raycast = NodePath("RodRaycast")
+
+[node name="Trail" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 10, 10, 20, 20, 30, 30, 40, 40)
+width_curve = SubResource("Curve_juvt0")
+gradient = SubResource("Gradient_0u2yh")
+script = ExtResource("7_igahc")
 
 [node name="Wings" type="Node2D" parent="."]
 
