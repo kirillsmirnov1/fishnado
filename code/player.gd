@@ -139,8 +139,15 @@ func handle_jump():
 		
 	if is_on_floor() or rod_line_connected or wings_active:
 		velocity.y = -jump_velocity
-		if rod_line_connected: rod_line_connected = false
-		if wings_active: wing_anim.play("wing_flap")
+		
+		if rod_line_connected: 
+			rod_line_connected = false
+		
+		if wings_active: 
+			wing_anim.play("wing_flap")
+			AudioManager.play_wing_sound()
+		else:
+			AudioManager.play_jump_sound()
 	
 		
 func check_fall_death():

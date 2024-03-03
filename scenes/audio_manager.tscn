@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://clcdrtmlk8c8i"]
+[gd_scene load_steps=9 format=3 uid="uid://clcdrtmlk8c8i"]
 
 [ext_resource type="Script" path="res://code/audio_manager.gd" id="1_o4j77"]
 [ext_resource type="AudioStream" uid="uid://bar34jo8w617h" path="res://audio/retro-game-music-loop__715708__prodbyrey.mp3" id="2_xlmjn"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://c2uk5y4rgynfo" path="res://audio/game-over-arcade__382310__myfox14.wav" id="4_kub7g"]
 [ext_resource type="AudioStream" uid="uid://b4hdyw8ugly3r" path="res://audio/coins-1__341695__projectsu012.wav" id="5_jeqp8"]
 [ext_resource type="AudioStream" uid="uid://dscx2yr1debfb" path="res://audio/level-up-01__337049__shinephoenixstormcrow__320655__rhodesmas.mp3" id="6_486iy"]
+[ext_resource type="AudioStream" uid="uid://b7hn027husunh" path="res://audio/jumping__146726__leszek_szary.wav" id="7_6s8h7"]
+[ext_resource type="AudioStream" uid="uid://coeovdr6ba53f" path="res://audio/birdflap1__246225__agentdd.wav" id="8_l5iul"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("action_music", "idle_music")]
 script = ExtResource("1_o4j77")
@@ -24,6 +26,16 @@ stream = ExtResource("4_kub7g")
 
 [node name="coin_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jeqp8")
+volume_db = -10.0
 
 [node name="power_up_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_486iy")
+volume_db = -10.0
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6s8h7")
+volume_db = -15.0
+
+[node name="wing_flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_l5iul")
+volume_db = 10.0

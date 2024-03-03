@@ -46,7 +46,11 @@ func play_coin_sound():
 func play_powerup_sound():
 	$power_up_sound.play()
 	
+func play_jump_sound():
+	$jump.play()
 	
+func play_wing_sound():
+	$wing_flap.play()
 	
 	
 	
