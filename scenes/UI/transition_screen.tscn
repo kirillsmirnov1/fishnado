@@ -3,11 +3,13 @@
 [ext_resource type="Script" path="res://code/transition_screen.gd" id="1_k476h"]
 [ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_22cqi"]
 
-[node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("bg", "timer_0_5")]
+[node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("bg", "timer_0_5", "lines_parent", "title")]
 layer = 100
 script = ExtResource("1_k476h")
 bg = NodePath("ColorRect")
 timer_0_5 = NodePath("0_5 timer")
+lines_parent = NodePath("ColorRect/Lines")
+title = NodePath("ColorRect/BigText")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -30,6 +32,46 @@ offset_bottom = 38.0
 theme_override_font_sizes/normal_font_size = 75
 bbcode_enabled = true
 text = "[center]FISHNADO"
+
+[node name="Lines" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/Lines"]
+layout_mode = 2
+text = "as a fisherman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/Lines"]
+layout_mode = 2
+text = "your worst nightmare "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="ColorRect/Lines"]
+layout_mode = 2
+text = "always was"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="ColorRect/Lines"]
+layout_mode = 2
+text = " seeing your favorite lake go dry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="ColorRect/Lines"]
+layout_mode = 2
+text = "but you know what's even worse?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="0_5 timer" type="Timer" parent="."]
 wait_time = 0.5
