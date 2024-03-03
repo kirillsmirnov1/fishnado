@@ -49,10 +49,11 @@ func _on_start_trigger_player_entered(body):
 
 func beginning_of_game():
 	state = State.Start
+	AudioManager.start_idle_music()
 	game_play_ui.visible = false
 	game_over_ui.visible = false
-	fishnado.set_active(false)
-	AudioManager.start_idle_music()
+	
+	fishnado.set_process(false)
 
 
 func start_game():

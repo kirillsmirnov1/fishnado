@@ -37,7 +37,6 @@ shape = SubResource("CircleShape2D_6ggvd")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rmvyb")
 scale = Vector2(2, 2)
-emitting = false
 amount = 200
 lifetime = 3.0
 texture = ExtResource("2_bj3le")
