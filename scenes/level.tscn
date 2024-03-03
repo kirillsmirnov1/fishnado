@@ -51,7 +51,6 @@ cam = NodePath("Camera2D")
 script = ExtResource("2_yljy8")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="PreviewingParallaxBackground"]
-position = Vector2(-233.977, -81.9768)
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(633.6, 237.6)
 
@@ -65,7 +64,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 192, 72)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="PreviewingParallaxBackground"]
-position = Vector2(-204.73, -71.7297)
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(633.6, 237.6)
 

@@ -46,11 +46,13 @@ func _on_start_trigger_player_entered(body):
 	if state == State.Start:
 		start_game()
 
+
 func beginning_of_game():
 	state = State.Start
 	game_play_ui.visible = false
 	game_over_ui.visible = false
 	fishnado.set_active(false)
+	AudioManager.start_idle_music()
 
 
 func start_game():
@@ -58,13 +60,7 @@ func start_game():
 	game_play_ui.visible = true
 	start_pos = cam.global_position.x
 	fishnado.set_active(true)
-	
-
-func update_points():
-	points_distance = (cam.global_position.x - start_pos) / 40
-	points_total = points_distance + points_collected
-	
-	game_play_ui.set_score(points_total)
+	AudioManager.start_action_music()
 	
 	
 func game_over():
@@ -73,11 +69,20 @@ func game_over():
 	game_over_ui.visible = true
 	player.set_process(false)
 	player.visible = false
+	AudioManager.start_idle_music()
+
+
+func update_points():
+	points_distance = (cam.global_position.x - start_pos) / 40
+	points_total = points_distance + points_collected
+	
+	game_play_ui.set_score(points_total)
 
 
 func _on_game_over_screen_restart_button_pressed():
 	print("Reloading scene")
 	get_tree().reload_current_scene()
+
 
 func handle_debug_input():
 	if Input.is_action_just_pressed("1"):

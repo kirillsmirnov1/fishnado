@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://clcdrtmlk8c8i"]
+
+[ext_resource type="Script" path="res://code/audio_manager.gd" id="1_o4j77"]
+[ext_resource type="AudioStream" uid="uid://bar34jo8w617h" path="res://audio/retro-game-music-loop__715708__prodbyrey.mp3" id="2_xlmjn"]
+[ext_resource type="AudioStream" uid="uid://b8n11rhvan8pp" path="res://audio/shanty-town__257997__foolboymedia.mp3" id="3_rbtop"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("action_music", "idle_music")]
+script = ExtResource("1_o4j77")
+action_music = NodePath("action_music")
+idle_music = NodePath("idle_music")
+
+[node name="action_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xlmjn")
+volume_db = -15.0
+
+[node name="idle_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rbtop")
