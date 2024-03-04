@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkcn5oksrvym2"]
+[gd_scene load_steps=4 format=3 uid="uid://bkcn5oksrvym2"]
 
 [ext_resource type="Script" path="res://code/transition_screen.gd" id="1_k476h"]
 [ext_resource type="PackedScene" uid="uid://brma37s75v5c6" path="res://scenes/UI/big_text.tscn" id="2_22cqi"]
+[ext_resource type="PackedScene" uid="uid://rpkwdafwypud" path="res://scenes/fish_nado.tscn" id="3_c8qlw"]
 
 [node name="TransitionScreen" type="CanvasLayer" node_paths=PackedStringArray("bg", "timer_0_5", "lines_parent", "title")]
 layer = 100
@@ -20,6 +21,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BigText" parent="ColorRect" instance=ExtResource("2_22cqi")]
+z_index = 1
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -29,9 +31,22 @@ offset_left = -2.0
 offset_top = -38.0
 offset_right = 0.0
 offset_bottom = 38.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/normal_font_size = 75
 bbcode_enabled = true
 text = "[center]FISHNADO"
+
+[node name="FishNado" parent="ColorRect/BigText" instance=ExtResource("3_c8qlw")]
+show_behind_parent = true
+position = Vector2(315, 37)
+script = null
+
+[node name="CollisionShape2D" parent="ColorRect/BigText/FishNado" index="0"]
+disabled = true
+
+[node name="CPUParticles2D" parent="ColorRect/BigText/FishNado" index="1"]
+show_behind_parent = true
 
 [node name="Lines" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
@@ -76,3 +91,5 @@ vertical_alignment = 1
 [node name="0_5 timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[editable path="ColorRect/BigText/FishNado"]

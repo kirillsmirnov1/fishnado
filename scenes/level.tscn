@@ -100,6 +100,7 @@ position = Vector2(49.5, -17.5)
 shape = SubResource("RectangleShape2D_j8s3b")
 
 [node name="helpful messages" type="Node2D" parent="Level Tiles"]
+visible = false
 
 [node name="TextThingy1" parent="Level Tiles/helpful messages" instance=ExtResource("10_fuppb")]
 offset_left = -183.0
@@ -158,7 +159,7 @@ theme_override_font_sizes/font_size = 7
 text = "you can jump while swinging"
 
 [node name="Player" parent="." instance=ExtResource("2_u73uh")]
-position = Vector2(-122, 181)
+position = Vector2(176, 202)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(0, 116)
